@@ -1,0 +1,15 @@
+/* WARNING : LCHIP system source file, do not edit */
+
+IMPLEMENTATION g_types_i
+REFINES g_types
+    // pragma CONSTANTS
+IMPORTS
+    g_standard_types
+VALUES
+    STRUE = 2 ;
+    SFALSE = 1 ;
+
+    MAX_UINT32 = 4294967295 ;
+    MAX_UINT16 = 65535 ;
+    MAX_UINT8 = 255
+END

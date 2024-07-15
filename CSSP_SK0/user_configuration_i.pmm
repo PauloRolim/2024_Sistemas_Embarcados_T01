@@ -1,0 +1,4 @@
+THEORY User_Pass IS
+    Operation(ValuesLemmas) & ff(0) & mp & pp(rp.0 | 5) & pp(rp.0 | 5);
+    Operation(ValuesLemmas) & ff(0) & dd(0) & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & ss & mp & mp & ah(Mhyp(xx : s)) & pp(rp.0 | 60) & ah(Mhyp(xx : s)) & pp(rp.0 | 60) & pp(rp.0 | 60)
+END

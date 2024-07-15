@@ -36,66 +36,19 @@ class Scenario():
         
     def run(self):
         while True :
-           #In['I01'].clear()
-           #In['I02'].clear()
-           #In['I03'].clear()
-          
-          # sleep(2)
-          # In['I01'].set()
-          # In['I02'].set()
-          # In['I03'].set()
-          
-           #sleep(2)
            In['I01'].clear()
-           #In['I02'].clear()
-           #In['I03'].clear()
-           
+           In['I02'].clear()
            sleep(2)
            In['I01'].set()
-           print("I01 ")
-           sleep(5)
+           sleep(2) 
            In['I01'].clear()
-           #In['I02'].set()
-           #print("I02 ")
-           #sleep(5)
-           #In['I02'].clear()
-           #In['I03'].set()
-           #print("I03 ")
-           #sleep(5)
-
-
-           # Out['O0'].read()
-           # Out['O1'].read()
-           # print("O0= %d O1 = %d" %(Out['O0'].status,Out['O1'].status))
-           # In['I0'].clear()
-           # sleep(1)
-
-           # Out['O0'].read()
-           # Out['O1'].read()
-           # print("O0= %d O1 = %d" %(Out['O0'].status,Out['O1'].status))
-           # In['I1'].clear()
-           # sleep(1)
-
-           # Out['O0'].read()
-           # Out['O1'].read()
-           # print("O0= %d O1 = %d" %(Out['O0'].status,Out['O1'].status))
-           # In['I2'].clear()
-           # sleep(1)
-
+           sleep(2)
+           In['I02'].set()
+           sleep(2) 
+           In['I02'].clear()
+           sleep(2)
            print("iter ")
  
-
-"""            In['I2'].clear()
-            Out['O0'].read()
-            print("After clear, value %d" % Out['O0'].status)
-            assert Out['O0'].status == In['I2'].status
-            sleep(1)
-            In['I2'].set()
-            Out['O0'].read()
-            print("After set  , value %d" % Out['O0'].status)
-            assert Out['O0'].status == In['I2'].status 
-            sleep(1)
-"""
 
 def getCSPPort():
     VENDOR_ID = "2341"

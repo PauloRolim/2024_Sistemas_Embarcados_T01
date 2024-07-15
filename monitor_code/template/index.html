@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Sinal</title>
+    <style>
+        #container {
+            position: relative;
+            width: 600px; /* ajuste conforme necessário */
+        }
+        #placa {
+            width: 100%;
+        }
+        .led {
+            position: absolute;
+            width: 20px;  /* ajuste conforme necessário */
+            height: 10px; /* ajuste conforme necessário */
+            background-color: gray;
+            /* border-radius: 50%; */ /* Comentado para mudar de círculo para retângulo */
+            transform: rotate(180deg); /* Adicionado para rotacionar o retângulo */
+        }
+        #led1 {
+            top: 71px;  /* ajuste conforme necessário */
+            left: 102px; /* ajuste conforme necessário */
+        }
+        #led2 {
+            top: 73px; /* ajuste conforme necessário */
+            left: 225px; /* ajuste conforme necessário */
+        }
+        #led3 {
+            top: 563px; /* ajuste conforme necessário */
+            left: 102px; /* ajuste conforme necessário */
+            width: 10px;  /* ajuste conforme necessário */
+            height: 20px; /* ajuste conforme necessário */
+
+        }
+        #led4 {
+            top: 563px; /* ajuste conforme necessário */
+            left: 275px; /* ajuste conforme necessário */
+            width: 10px;  /* ajuste conforme necessário */
+            height: 20px; /* ajuste conforme necessário */
+        }
+    </style>
+    <script>
+        async function fetchSignal() {
+            try {
+                const response = await fetch('/signal');
+                const data = await response.json();
+                const led1 = document.getElementById('led1');
+                const led2 = document.getElementById('led2');
+                const led3 = document.getElementById('led3');
+                const led4 = document.getElementById('led4');
+                if (data.signal) {
+                    led1.style.backgroundColor = 'red';
+                    led2.style.backgroundColor = 'red';
+                    led3.style.backgroundColor = 'red';
+                    led4.style.backgroundColor = 'red';
+                } else {
+                    led1.style.backgroundColor = 'gray';
+                    led2.style.backgroundColor = 'gray';
+                    led3.style.backgroundColor = 'gray';
+                    led4.style.backgroundColor = 'gray';
+                }
+            } catch (error) {
+                console.error('Erro ao buscar o sinal:', error);
+            }
+        }
+
+        setInterval(fetchSignal, 500); // Atualiza a cada segundo
+
+        async function controlLED(state) {
+            try {
+                const response = await fetch('/led', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ state: state })
+                });
+                const data = await response.json();
+                console.log('LED control response:', data);
+            } catch (error) {
+                console.error('Erro ao controlar o LED:', error);
+            }
+        }
+
+        async function controlI2(state) {
+            try {
+                const response = await fetch('/led2', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ state: state })
+                });
+                const data = await response.json();
+                console.log('LED control response:', data);
+            } catch (error) {
+                console.error('Erro ao controlar o LED:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Monitor de Sinal</h1>
+    <div id="container">
+        <img id="placa" src="{{ url_for('static', filename='placa.png') }}" alt="Placa">
+        <div id="led1" class="led"></div>
+        <div id="led2" class="led"></div>
+    </div>
+    <button onclick="controlLED('on')">Ligar I1</button>
+    <button onclick="controlLED('off')">Desligar I1</button>	
+    <button onclick="controlI2('on')">Ligar I2</button>
+    <button onclick="controlI2('off')">Desligar I2</button>
+</body>
+</html>
+
